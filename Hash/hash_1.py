@@ -39,3 +39,5 @@ def solution(participants, completion):
         if v != 0:
             answer = k
     return answer
+
+# collection counter
