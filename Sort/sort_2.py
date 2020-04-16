@@ -19,42 +19,6 @@
 
 
 def solution(numbers):
-    answer = ''
-    numbers = list(map(str, numbers)    # 문자열로 전환된 numbers
-    num=[]
-
-    for i in numbers:
-        if len(i) == 1:
-            num.append(i)
-        elif len(i) == 2:
-            k=int(i) // 10
-            num.append(k)
-        elif len(i) == 3:
-            k=int(i) // 100
-            num.append(i)
-        else:
-            k=int(i) // 1000
-            num.append(i)
-
-    for i in range(len(numbers)):
-        n=max(num)
-        if num.count(n) == 0:
-            for k in numbers:
-                if n in k:
-                    answer += k
-            num.remove(n)
-        else:       # 3, 30, 34
-            nlist = [x for x in numbers if n in x]  # 3,30,34
-            for k in nlist:
-                k 
+    numbers = list(map(str, numbers))
+    answer = "".join(sorted(numbers, key=lambda x: x*3, reverse=True))
     return answer
-
-# 문자열에서 find?함수 search함수?
-
-# num = [3, 34, 45, 27, 543, 33]
-# nums = list(map(str, num))
-
-# k = '3'
-# for i in nums:
-#     if k in i:
-#         print(i)
