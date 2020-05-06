@@ -8,13 +8,3 @@
 #                 hash_table[n] += 1
 #     print(hash_table)
 #     return answer
-
-
-# print(solution(["119", "23454", "1193423"]))
-
-hash_table = {}
-phone_book = ["119", "32434", "1193425"]
-for n in phone_book:
-    hash_table[n] += 1
-for k, v in hash_table.items():
-    print(k, v)

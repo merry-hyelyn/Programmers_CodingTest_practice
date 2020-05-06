@@ -17,19 +17,20 @@
 # [6, 10, 2]	6210
 # [3, 30, 34, 5, 9]	9534330
 
+from itertools import permutations
+
+
+def solution(numbers):
+    numbers = list(map(str, numbers))
+    result = list(permutations(numbers))
+    answer = []
+    for i in result:
+        answer.append(''.join(i))
+
+    return max(answer)
+
 
 def solution(numbers):
     numbers = list(map(str, numbers))
     numbers.sort(key=lambda x: x*3, reverse=True)
     return str(int(''.join(numbers))
-
-from itertools import permutations
-
-def solution(numbers):
-    numbers=list(map(str, numbers))
-    result=list(permutations(numbers))
-    answer=[]
-    for i in result:
-        answer.append(''.join(i))
-
-    return max(answer)
