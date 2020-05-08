@@ -50,11 +50,23 @@
 # [7] 번째 탑이 쏜 신호는 6번째 탑이 수신합니다.
 
 
-def soluton(heights):
+def solution(heights):
     answer = []
     l = len(heights)
     for i in range(l):
         t = heights.pop()
         h = len(heights)
 
+        for k in range(h-1, -1, -1):
+            if t < heights[k]:
+                answer.append(k+1)
+                break
+
+            if k == 0:
+                answer.append(0)
+    answer.append(0)
+    answer.reverse()
     return answer
+
+
+print(solution([1, 5, 3, 6, 7, 6, 5]))
