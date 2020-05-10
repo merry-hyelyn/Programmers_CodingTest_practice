@@ -24,7 +24,7 @@
 
 # 따라서 7일째에 2개의 기능, 9일째에 1개의 기능이 배포됩니다.
 
-from collections import Counter
+from math import ceil
 
 
 def solution(progresses, speeds):
@@ -36,11 +36,7 @@ def solution(progresses, speeds):
         p = progresses[i]
         s = speeds[i]
         day = 0
-        while True:
-            if p >= 100:
-                break
-            p += s
-            day += 1
+        day = ceil((100-p) / s)
         done.append(day)
     reday = done[0]
     count = 0
