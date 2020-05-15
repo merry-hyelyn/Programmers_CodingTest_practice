@@ -40,17 +40,21 @@
 
 def solution(priorities, location):
     answer = 0
-    # x = index, y = prioirity
     qlist = [(x, y) for x, y in enumerate(priorities)]
-    result = []
+    prev = []
 
-    while priorities:
+    while prioirities:
         p = priorities.pop(0)
+        for q in qlist:
+            if q[1] > p:
+                for i in prev:
+                    qlist.remove(i)
+                    qlist.append(i)
+                    break
 
-        for x, y in qlist:
-            if p < y:
-                result.append((x, y))
-
+            else:
+                prev.append(q)
+        prev = []
     return answer
 
 # l = [2, 4, 2, 6, 2]
