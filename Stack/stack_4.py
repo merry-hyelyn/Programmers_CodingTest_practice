@@ -39,29 +39,28 @@
 
 
 def solution(priorities, location):
-    answer = 0
     qlist = [(x, y) for x, y in enumerate(priorities)]
-    prev = []
+    result = []
 
-    while prioirities:
-        p = priorities.pop(0)
+    while qlist:
+        l = len(qlist)
+        p = qlist.pop(0)
+
         for q in qlist:
-            if q[1] > p:
-                for i in prev:
-                    qlist.remove(i)
-                    qlist.append(i)
-                    break
+            if q[1] > p[1]:
+                qlist.append(p)
+                break
 
-            else:
-                prev.append(q)
-        prev = []
-    return answer
+        if l == len(qlist):
+            continue
 
-# l = [2, 4, 2, 6, 2]
-# k = []
-# e = [(x, y) for x, y in enumerate(l)]
-# for x, y in e:
-#     print(x, y)
-#     k.append((x, y))
+        else:
+            result.append(p)
+    print(result)
 
-# print(k)
+    for r in result:
+        if r[0] == location:
+            return result.index(r)+1
+
+
+print(solution([1, 1, 9, 1, 1, 1], 0))
