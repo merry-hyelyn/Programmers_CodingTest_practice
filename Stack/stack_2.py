@@ -49,9 +49,8 @@ def solution(bridge_length, weight, truck_weights):
         if l == len(done):
             break
 
-        t = truck_weights[0]
-        del truck_weights[0]
-        
+        t = truck_weights.pop(0)
+
         w += t
         if w > weight:
             w -= t
@@ -63,9 +62,10 @@ def solution(bridge_length, weight, truck_weights):
             else:
                 truck_ing[t] += 1
 
-
         for k, v in truck_ing.items():
             if v == bridge_length:
                 del truck_ing[k]
                 done.append(k)
+            else:
+                v += 1
     return time
