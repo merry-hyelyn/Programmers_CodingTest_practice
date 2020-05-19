@@ -38,34 +38,34 @@
 
 
 def solution(bridge_length, weight, truck_weights):
+    truck_ing = []
+    dict_truck = {}
     done = []
-    truck_ing = {}
     time = 0
-    w = 0
-    l = len(truck_weights)
 
     while True:
         time += 1
-        if l == len(done):
+        if not truck_weights:
             break
 
+        for k, v in dict_truck.items():
+            if v == bridge_length:
+                dict_truck[k] = 0
+                truck_ing.remove(k)
         t = truck_weights.pop(0)
+        truck_ing.append(t)
 
-        w += t
-        if w > weight:
-            w -= t
+        if sum(truck_ing) > weight:
+            truck_ing.remove(t)
             truck_weights.insert(0, t)
 
-        else:
-            if t not in truck_ing:
-                truck_ing[t] = 1
+        for i in truck_ing:
+            if i not in dict_truck:
+                dict_truck[i] = 1
             else:
-                truck_ing[t] += 1
+                dict_truck[i] += 1
 
-        for k, v in truck_ing.items():
-            if v == bridge_length:
-                del truck_ing[k]
-                done.append(k)
-            else:
-                v += 1
-    return time
+    return time+1
+
+
+print(solution(2, 10, [7, 4, 5, 6]))
