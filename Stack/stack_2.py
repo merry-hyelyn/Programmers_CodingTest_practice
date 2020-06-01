@@ -45,7 +45,7 @@ def solution(bridge_length, weight, truck_weights):
 
     while True:
         time += 1
-        if not truck_weights:
+        if truck_ing:
             break
 
         for k, v in dict_truck.items():
