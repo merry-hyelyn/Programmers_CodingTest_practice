@@ -16,7 +16,8 @@ def solution(genres, plays):
 
         for i, genre in enumerate(genres):
             if genre == album:
-                play_list.append(plays[i])
+                if plays[i] not in play_list:
+                    play_list.append(plays[i])
         
         l = len(play_list)
         cnt =0
@@ -34,4 +35,4 @@ def solution(genres, plays):
 
     return answer
 
-print(solution(['classic', 'pop', 'classic', 'classic', 'pop'],[500, 600, 150, 800, 2500]))
+print(solution(['classic', 'pop', 'classic', 'classic', 'pop'],[800, 600, 150, 800, 2500]))
