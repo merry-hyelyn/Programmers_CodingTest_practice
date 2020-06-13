@@ -1,13 +1,37 @@
 def solution(genres, plays):
     answer = []
-    album = {}
+    albums = {}
 
     for i in range(len(genres)):
-        if genres[i] in album:
-            album[genres[i]] += plays[i]
+        if genres[i] in albums:
+            albums[genres[i]] += plays[i]
         else:
-            album[genres[i]] = plays[i]
-    print(album)
+            albums[genres[i]] = plays[i]
+    
+    length = len(albums)
+    play_list = []
+
+    for i in range(length):
+        album = max(albums.keys())
+
+        for i, genre in enumerate(genres):
+            if genre == album:
+                play_list.append(plays[i])
+        
+        l = len(play_list)
+        cnt =0
+
+        for i in range(l):
+            cnt += 1
+            if cnt >= 3:
+                break
+            play = max(play_list)
+            answer.append(plays.index(play))
+            play_list.remove(play)
+
+        play_list = []
+        albums.pop(album)
+
     return answer
 
-solution(['classic', 'pop', 'classic', 'classic', 'pop'],[500, 600, 150, 800, 2500])
+print(solution(['classic', 'pop', 'classic', 'classic', 'pop'],[500, 600, 150, 800, 2500]))
