@@ -16,8 +16,12 @@ def solution(genres, plays):
                 play_list[i] = plays[i]
         
         result = sorted(play_list.items(), key=(lambda x: x[1]), reverse=True)
-        for i in range(2):
-            answer.append(result[i][0])
+        
+        if len(result) >= 2:
+            for i in range(2):
+                answer.append(result[i][0])
+        else:
+            answer.append(result[0][0])
 
         play_list = {}
     return answer
